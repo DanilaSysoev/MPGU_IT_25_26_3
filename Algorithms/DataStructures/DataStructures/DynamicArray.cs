@@ -57,6 +57,11 @@ public class DynamicArray<T>
         );
     }
 
+    private void ThrowInvalidOperation()
+    {
+        throw new InvalidOperationException();
+    }
+
     private T[] data;
     private int size;
     private int capacity;
