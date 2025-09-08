@@ -1,4 +1,6 @@
-﻿class Program
+﻿namespace OopDemo;
+
+static class Program
 {
     static void Main()
     {
