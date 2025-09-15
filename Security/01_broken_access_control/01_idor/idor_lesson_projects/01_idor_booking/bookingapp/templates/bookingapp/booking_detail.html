@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Booking: детально ({{ mode }})</h2>
+<p><b>ID:</b> {{ obj.id }}</p>
+<p><b>Owner:</b> <span id="ownerName">{{ obj.owner.username }}</span></p>
+<p><b>Title:</b> {{ obj.title }}</p>
+<div class="card">
+  <strong>Плохая проверка: только JS-валидация «владелец == текущий пользователь»</strong>
+  <form method="post" action="/vuln/booking/update/{{ obj.id }}/">
+    {% csrf_token %}<input name='title' placeholder="Новое значение"><button id="updBtn" type="submit" disabled>Обновить</button>
+  </form>
+  <p class="muted">Console: <code>document.getElementById('updBtn').disabled=false</code></p>
+</div>
+<script>
+try{ 
+  var currentUser = localStorage.getItem('currentUser') || 'guest';
+  var owner = document.getElementById('ownerName').innerText.trim();
+  if(currentUser === owner){ document.getElementById('updBtn').disabled = false; }
+}catch(e){}
+</script>
+<p><a href="/secure/booking/list/">Вернуться к списку</a></p>
+{% endblock %}

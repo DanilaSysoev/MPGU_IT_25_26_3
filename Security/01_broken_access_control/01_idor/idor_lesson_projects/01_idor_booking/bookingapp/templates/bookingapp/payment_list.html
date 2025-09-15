@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Payment: мои объекты</h2>
+<table>
+  <tr><th>ID</th><th>Owner</th><th>Title</th><th>Действия</th></tr>
+  {% for o in objects %}
+    <tr>
+      <td>{{ o.id }}</td><td>{{ o.owner.username }}</td><td>{{ o.title }}</td>
+      <td>
+        <a href="/secure/payment/{{ o.id }}/">Безопасно</a> |
+        <a href="/vuln/payment/?id={{ o.id }}">Уязвимо (query)</a> |
+        <a href="/vuln/payment/path/{{ o.id }}/">Уязвимо (path)</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+<div class="card">
+  <strong>Плохая проверка: скрытая форма обновления</strong>
+  <form id="editForm" class="hidden" method="post" action="/vuln/payment/update/1/">
+    {% csrf_token %}<input name='title' placeholder="Новое значение"><button type="submit">Сохранить</button>
+  </form>
+  <p class="muted">Уберите класс <code>hidden</code> в DevTools — форма станет доступной.</p>
+</div>
+{% endblock %}

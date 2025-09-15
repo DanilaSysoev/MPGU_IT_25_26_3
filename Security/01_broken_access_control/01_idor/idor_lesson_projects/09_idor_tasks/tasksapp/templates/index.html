@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <p>{{ domain_desc }}</p>
+  <p>Три уязвимости: «ID как секрет», нет серверной проверки владельца, и только клиентские проверки.</p>
+</div>
+<h3>Мои списки</h3>
+<ul>{% for href, label in my_lists %}<li><a href="{{ href }}">{{ label }}</a></li>{% endfor %}</ul>
+<div class="card">
+  <strong>Плохая проверка на клиенте:</strong>
+  <button id="toggleBtn" class="hidden" onclick="document.getElementById('badForm').classList.remove('hidden')">Показать форму «Редактировать чужое»</button>
+  <form id="badForm" class="hidden" method="post" action="/vuln/{{ my_lists.0.0|cut:'/secure/'|cut:'/list/' }}update/1/">
+    {% csrf_token %}<input name="title" placeholder="Новое значение"><button type="submit">Отправить</button>
+  </form>
+  <p class="muted">Console: <code>localStorage.setItem('isAdmin','true'); location.reload()</code></p>
+</div>
+<script>try{if(localStorage.getItem('isAdmin')==='true'){document.getElementById('toggleBtn').classList.remove('hidden')}}catch(e){{}};</script>
+{% endblock %}

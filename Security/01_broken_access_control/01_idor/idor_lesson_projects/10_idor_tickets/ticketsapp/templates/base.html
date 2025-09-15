@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDOR Training</title>
+  <style>body{font-family:system-ui;margin:2rem}nav a{margin-right:1rem}.card{border:1px solid #ddd;padding:1rem;border-radius:.5rem;margin:.5rem 0}.hidden{display:none}.muted{color:#666}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ddd;padding:6px 8px}</style>
+</head>
+<body>
+<nav><a href="/">Главная</a><a href="/login/">Логин</a><a href="/logout/">Логаут</a><a href="/admin/">Django admin</a></nav>
+{% if messages %}{% for m in messages %}<div class="card">{{ m }}</div>{% endfor %}{% endif %}
+<h1>IDOR — демо</h1>
+{% block content %}{% endblock %}
+</body>
+</html>

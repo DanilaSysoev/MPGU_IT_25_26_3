@@ -5,3 +5,4 @@ bin/
 obj/
 Works/
 not_prepared/
+.venv/
