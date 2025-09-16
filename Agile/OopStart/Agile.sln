@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OopStart", "OopStart\OopSta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composition", "Composition\Composition.csproj", "{5D269363-2DA0-427D-A51D-762AE1BF6760}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance", "Inheritance\Inheritance.csproj", "{EEA8F187-EC76-4B14-BB68-4013028029D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionsDemo", "ExceptionsDemo\ExceptionsDemo.csproj", "{66E6199B-777D-4D88-98B0-6BF523BF1B66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{5D269363-2DA0-427D-A51D-762AE1BF6760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D269363-2DA0-427D-A51D-762AE1BF6760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D269363-2DA0-427D-A51D-762AE1BF6760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA8F187-EC76-4B14-BB68-4013028029D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA8F187-EC76-4B14-BB68-4013028029D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA8F187-EC76-4B14-BB68-4013028029D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA8F187-EC76-4B14-BB68-4013028029D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66E6199B-777D-4D88-98B0-6BF523BF1B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66E6199B-777D-4D88-98B0-6BF523BF1B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66E6199B-777D-4D88-98B0-6BF523BF1B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66E6199B-777D-4D88-98B0-6BF523BF1B66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
