@@ -6,3 +6,6 @@ obj/
 Works/
 not_prepared/
 .venv/
+*.sqlite3
+migrations/
+*.zip
