@@ -4,7 +4,7 @@
 <p><b>ID:</b> {{ obj.id }}</p>
 <p><b>Owner:</b> <span id="ownerName">{{ obj.owner.username }}</span></p>
 <p><b>Title:</b> {{ obj.text }}</p>
-<div class="card">
+{% comment %} <div class="card">
   <strong>Плохая проверка: только JS-валидация «владелец == текущий пользователь»</strong>
   <form method="post" action="/vuln/message/update/{{ obj.id }}/">
     {% csrf_token %}<input name='text' placeholder="Новое значение"><button id="updBtn" type="submit" disabled>Обновить</button>
@@ -16,7 +16,7 @@ try{
   var currentUser = localStorage.getItem('currentUser') || 'guest';
   var owner = document.getElementById('ownerName').innerText.trim();
   if(currentUser === owner){ document.getElementById('updBtn').disabled = false; }
-}catch(e){}
+}catch(e){} {% endcomment %}
 </script>
 <p><a href="/secure/message/list/">Вернуться к списку</a></p>
 {% endblock %}

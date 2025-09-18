@@ -14,11 +14,11 @@
     </tr>
   {% endfor %}
 </table>
-<div class="card">
+{% comment %} <div class="card">
   <strong>Плохая проверка: скрытая форма обновления</strong>
   <form id="editForm" class="hidden" method="post" action="/vuln/message/update/1/">
     {% csrf_token %}<input name='text' placeholder="Новое значение"><button type="submit">Сохранить</button>
   </form>
   <p class="muted">Уберите класс <code>hidden</code> в DevTools — форма станет доступной.</p>
-</div>
+</div> {% endcomment %}
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import LoginForm
@@ -37,7 +38,10 @@ def ticket_list(request):
 def ticket_detail_vuln(request):
     obj_id = request.GET.get("id")
     obj = get_object_or_404(Ticket, id=obj_id)
-    return render(request, "ticketsapp/ticket_detail.html", {"obj": obj, "mode": "vuln_query"})
+    if obj.owner == request.user:
+        return render(request, "ticketsapp/ticket_detail.html", {"obj": obj, "mode": "vuln_query"})
+    else:
+        return HttpResponse("Forbidden", status=403)
 
 @login_required
 def ticket_detail_secure(request, obj_id):
@@ -46,15 +50,21 @@ def ticket_detail_secure(request, obj_id):
 
 def ticket_detail_vuln_path(request, obj_id):
     obj = get_object_or_404(Ticket, id=obj_id)
-    return render(request, "ticketsapp/ticket_detail.html", {"obj": obj, "mode": "vuln_path"})
+    if obj.owner == request.user:
+        return render(request, "ticketsapp/ticket_detail.html", {"obj": obj, "mode": "vuln_path"})
+    else:
+        return HttpResponse("Forbidden", status=403)
 
 @require_POST
 def ticket_update_vuln(request, obj_id):
     obj = get_object_or_404(Ticket, id=obj_id)
-    if 'title' in request.POST:
-        setattr(obj, 'title', request.POST['title'])
-    obj.save()
-    return redirect("index")
+    if obj.owner == request.user:
+        if 'title' in request.POST:
+            setattr(obj, 'title', request.POST['title'])
+        obj.save()
+        return redirect("index")
+    else:        
+        return HttpResponse("Forbidden", status=403)
 
 
 from django.contrib.auth.decorators import login_required
@@ -70,7 +80,10 @@ def message_list(request):
 def message_detail_vuln(request):
     obj_id = request.GET.get("id")
     obj = get_object_or_404(Message, id=obj_id)
-    return render(request, "ticketsapp/message_detail.html", {"obj": obj, "mode": "vuln_query"})
+    if obj.owner == request.user:
+        return render(request, "ticketsapp/message_detail.html", {"obj": obj, "mode": "vuln_query"})
+    else:
+        return HttpResponse("Forbidden", status=403)
 
 @login_required
 def message_detail_secure(request, obj_id):
@@ -79,12 +92,18 @@ def message_detail_secure(request, obj_id):
 
 def message_detail_vuln_path(request, obj_id):
     obj = get_object_or_404(Message, id=obj_id)
-    return render(request, "ticketsapp/message_detail.html", {"obj": obj, "mode": "vuln_path"})
+    if obj.owner == request.user:
+        return render(request, "ticketsapp/message_detail.html", {"obj": obj, "mode": "vuln_path"})
+    else:
+        return HttpResponse("Forbidden", status=403)
 
 @require_POST
-def message_update_vuln(request, obj_id):
+def message_update_vuln(request, obj_id):    
     obj = get_object_or_404(Message, id=obj_id)
-    if 'text' in request.POST:
-        setattr(obj, 'text', request.POST['text'])
-    obj.save()
-    return redirect("index")
+    if obj.owner == request.user:
+        if 'text' in request.POST:
+            setattr(obj, 'text', request.POST['text'])
+        obj.save()
+        return redirect("index")
+    else:
+        return HttpResponse("Forbidden", status=403)
