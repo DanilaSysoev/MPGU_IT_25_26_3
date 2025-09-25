@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <p>{{ domain_desc }}</p>
+    <p>В проекте намеренно реализованы три уязвимости эскалации привилегий.</p>
+  </div>
+
+  <h3>Ссылки</h3>
+  <ul>{% for url, label in actions %}<li><a href="{{ url }}">{{ label }}</a></li>{% endfor %}</ul>
+
+  <h3>Мои объекты</h3>
+  <ul>{% for url, label in my_lists %}<li><a href="{{ url }}">{{ label }}</a></li>{% endfor %}</ul>
+{% endblock %}

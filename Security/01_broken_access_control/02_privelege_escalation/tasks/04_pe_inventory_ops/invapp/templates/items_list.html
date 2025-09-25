@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Мои объекты</h2>
+<table>
+  <tr><th>ID</th><th>Заголовок</th></tr>
+  {% for it in items %}<tr><td>{{ it.id }}</td><td>{{ it.title }}</td></tr>{% empty %}<tr><td colspan="2">Пусто</td></tr>{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <p>{{ domain_desc }}</p>
+    <p>В проекте намеренно реализованы три уязвимости эскалации привилегий.</p>
+  </div>
+
+  <h3>Ссылки</h3>
+  <ul>{% for url, label in actions %}<li><a href="{{ url }}">{{ label }}</a></li>{% endfor %}</ul>
+
+  <h3>Мои объекты</h3>
+  <ul>{% for url, label in my_lists %}<li><a href="{{ url }}">{{ label }}</a></li>{% endfor %}</ul>
+
+  <div class="card">
+    <strong>Плохая проверка на клиенте:</strong>
+    <p>Кнопки ниже появляются, если <code>localStorage.isAdmin</code> равен <code>"true"</code>.</p>
+    <button id="openAdminBtn" class="hidden" onclick="location.href='/vuln/admin_panel/'">Открыть уязвимую админ-панель</button>
+    <form id="promoteForm" class="hidden" method="get" action="/vuln/promote_user/2/">
+      <input type="text" name="role" value="admin"><button type="submit">Повысить пользователя #2 до admin (уязвимо)</button>
+    </form>
+    <p class="muted">Console: <code>localStorage.setItem('isAdmin','true'); location.reload()</code></p>
+  </div>
+  <script>
+    try { if (localStorage.getItem('isAdmin') === 'true') {
+      document.getElementById('openAdminBtn').classList.remove('hidden');
+      document.getElementById('promoteForm').classList.remove('hidden');
+    }} catch(e) {}
+  </script>
+{% endblock %}
