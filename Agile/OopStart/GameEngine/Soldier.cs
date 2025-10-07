@@ -6,7 +6,7 @@ public class Soldier : IAlive, IWarrior, IAttackable
     public int Thirst { get; private set; }
     public int Fatigue { get; private set; }
 
-    public int Hp { get; private set; }
+    public int Hp { get; set; }
     public int Damage { get; init; }
 
     public Soldier(int hp, int damage)

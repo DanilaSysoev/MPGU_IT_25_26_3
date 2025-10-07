@@ -8,7 +8,7 @@ public class Peasant : IAlive, IWorker, IAttackable
 
     public int Coins { get; private set; } = 0;
 
-    public int Hp { get; private set; }
+    public int Hp { get; set; }
 
     public Peasant(int hp)
     {

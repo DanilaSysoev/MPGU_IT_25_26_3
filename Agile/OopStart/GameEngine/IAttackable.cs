@@ -2,7 +2,10 @@ namespace GameEngine;
 
 public interface IAttackable
 {
-    int Hp { get; }
+    int Hp { get; set; }
 
-    void TakeDamage(int damage);
+    void TakeDamage(int damage)
+    {
+        Hp -= damage;
+    }
 }
