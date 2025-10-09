@@ -1,0 +1,44 @@
+{% extends "hr/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Welcome, {{ username }}</h3>
+        <p class="card-text">Choose where to go next:</p>
+
+        <div class="d-flex flex-column gap-2">
+          {% if is_hr %}
+            <a href="{% url 'hr:hr_candidates_list' %}" class="btn btn-primary">HR: My candidates</a>
+          {% endif %}
+
+          {% if is_admin %}
+            <a href="{% url 'hr:admin_dashboard' %}" class="btn btn-outline-secondary">Admin dashboard</a>
+          {% endif %}
+
+          {% if not is_hr and not is_admin %}
+            <div class="alert alert-info">
+              You are logged in but do not have HR or Admin roles. If you expected access, ask an administrator.
+            </div>
+          {% endif %}
+
+            <form method="post" action="{% url 'hr:logout' %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link">Logout</button>
+            </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Quick info</h5>
+        <p class="card-text small text-muted">
+          This page redirects anonymous users to login. After login you will see links corresponding to your roles.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

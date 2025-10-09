@@ -1,0 +1,3 @@
+Sample resume content (demo).
+Candidate: John Smith
+uploaded_by=hr_bob

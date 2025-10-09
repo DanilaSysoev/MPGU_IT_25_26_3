@@ -1,0 +1,3 @@
+Sample resume content (demo).
+Candidate: Ivan Petrov
+uploaded_by=admin

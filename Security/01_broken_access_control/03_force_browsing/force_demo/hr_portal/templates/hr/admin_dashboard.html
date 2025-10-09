@@ -1,0 +1,37 @@
+{% extends "hr/base.html" %}
+{% block content %}
+  <h1>Admin dashboard</h1>
+
+  <h2>Candidates</h2>
+  <table class="table">
+    <thead><tr><th>#</th><th>Full name</th><th>email</th><th>created_by</th><th>created</th></tr></thead>
+    <tbody>
+      {% for c in candidates %}
+        <tr>
+          <td>{{ c.id }}</td>
+          <td>{{ c.full_name }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.created_by.get_username }}</td>
+          <td>{{ c.date_created|date:"Y-m-d H:i" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Resumes</h2>
+  <table class="table">
+    <thead><tr><th>#</th><th>candidate</th><th>file</th><th>uploaded_by</th><th>uploaded_at</th><th></th></tr></thead>
+    <tbody>
+      {% for r in resumes %}
+        <tr>
+          <td>{{ r.id }}</td>
+          <td>{{ r.candidate.full_name }}</td>
+          <td>{{ r.filename }}</td>
+          <td>{{ r.uploaded_by.get_username }}</td>
+          <td>{{ r.uploaded_at|date:"Y-m-d H:i" }}</td>
+          <td><a class="btn btn-sm btn-primary" href="{% url 'hr:download_resume' r.id %}">Download</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
