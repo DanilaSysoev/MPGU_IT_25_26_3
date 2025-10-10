@@ -2,6 +2,8 @@
 ## Linux / macOS (bash / zsh)
 
 ```bash
+cd <каталог_проекта>  # проверить можно по наличию файла manage.py
+
 # 1. создать виртуальное окружение
 python -m venv .venv
 
@@ -32,6 +34,8 @@ pytest -q
 ## Windows (PowerShell)
 
 ```powershell
+cd <каталог_проекта>  # проверить можно по наличию файла manage.py
+
 # 1. создать venv
 python -m venv .venv
 
@@ -55,19 +59,6 @@ python manage.py runserver
 # 7. запуск тестов (в активированном окружении)
 pytest -q
 # или
-python -m pytest -q
-```
-
-## Windows (cmd.exe)
-
-```cmd
-.venv\Scripts\activate.bat
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-python manage.py makemigrations <название_проекта>
-python manage.py migrate
-python manage.py seed_demo
-python manage.py runserver
 python -m pytest -q
 ```
 
