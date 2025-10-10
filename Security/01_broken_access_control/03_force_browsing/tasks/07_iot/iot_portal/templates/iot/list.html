@@ -1,0 +1,19 @@
+{% extends "iot/base.html" %}
+{% block title %}List{% endblock %}
+{% block content %}
+<h2>iot Items</h2>
+<table class="table table-sm table-striped">
+  <thead><tr><th>ID</th><th>Title/Name</th><th>Actions</th></tr></thead>
+  <tbody>
+    {% for obj in objects %}
+      <tr>
+        <td>{{ obj.id }}</td>
+        <td>{{ obj }}</td>
+        <td><a class="btn btn-sm btn-outline-primary" href="{% url 'iot:detail' obj.id %}">View</a></td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="3">No items</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

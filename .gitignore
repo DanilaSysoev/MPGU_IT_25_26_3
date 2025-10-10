@@ -9,3 +9,4 @@ not_prepared/
 *.sqlite3
 *.zip
 static_collected/
+*_cache/

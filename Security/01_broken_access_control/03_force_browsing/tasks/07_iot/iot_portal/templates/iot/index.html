@@ -1,0 +1,31 @@
+{% extends "iot/base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h1>iot</h1>
+    <p>Welcome{% if username %} {{ username }}{% endif %}.</p>
+    <p class="card-text">Choose where to go next:</p>
+    <div class="d-flex flex-column gap-2">
+      {% if is_tech %}
+        <a href="{% url 'ecom:list' %}" class="btn btn-primary">Manager: My orders</a>
+      {% endif %}
+
+      {% if is_admin %}
+        <a href="{% url 'ecom:admin_dashboard' %}" class="btn btn-outline-secondary">Admin dashboard</a>
+      {% endif %}
+
+      {% if not is_tech and not is_admin %}
+        <div class="alert alert-info">
+          You are logged in but do not have HR or Admin roles. If you expected access, ask an administrator.
+        </div>
+      {% endif %}
+
+        <form method="post" action="{% url 'ecom:logout' %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-link">Logout</button>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

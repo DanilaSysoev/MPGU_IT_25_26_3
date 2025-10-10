@@ -1,0 +1,17 @@
+{% extends "ecom/base.html" %}
+{% block title %}Detail{% endblock %}
+{% block content %}
+<h2>Detail</h2>
+<dl class="row">
+  <dt class="col-sm-3">ID</dt><dd class="col-sm-9">{{ order.id }}</dt>
+  <dt class="col-sm-3">Repr</dt><dd class="col-sm-9">{{ order }}</dt>
+</dl>
+{% if invoices %}
+  <h3>Files</h3>
+  <ul>
+    {% for f in invoices %}
+      <li>{{ f.filename }} - <a href="{% url 'ecom:download' f.id %}">Download</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}

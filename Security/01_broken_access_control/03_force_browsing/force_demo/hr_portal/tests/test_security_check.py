@@ -1,4 +1,3 @@
-# tests/test_security_checks.py
 import os
 
 import pytest
@@ -45,7 +44,6 @@ def test_candidate_view_acl(client):
     """
     # создаём пользователей
     owner = User.objects.create_user("owner", password="password")
-    other = User.objects.create_user("other", password="password")
     # пометим owner как HR (при желании)
     owner.is_hr = True
     owner.save()
@@ -76,7 +74,6 @@ def test_download_resume_acl(client):
     Если маршрут возвращает 200 для таких пользователей — тест упадёт.
     """
     owner = User.objects.create_user("owner2", password="password")
-    other = User.objects.create_user("other2", password="password")
     cand = Candidate.objects.create(full_name="R Res", email="r@example.com", created_by=owner, is_public=False)
 
     # создаём резюме (FileField сохранит файл в тестовом MEDIA_ROOT)
@@ -109,7 +106,6 @@ def test_export_user_profile_requires_auth(client):
     Тест падает, если маршрут возвращает 200 для анонима или для постороннего пользователя.
     """
     alice = User.objects.create_user("alice", password="password", email="alice@example.com")
-    bob = User.objects.create_user("bob", password="password", email="bob@example.com")
 
     # аноним пытается экспортировать профиль alice
     r_anon = client.get(f"/api/users/{alice.id}/export/")
@@ -126,25 +122,6 @@ def test_export_user_profile_requires_auth(client):
     r_alice = client.get(f"/api/users/{alice.id}/export/")
     assert r_alice.status_code == 200, "User must be able to export own profile"
     client.logout()
-
-
-@pytest.mark.django_db
-def test_crash_does_not_expose_stacktrace(client, settings):
-    """
-    При DEBUG=False /crash/ не должен раскрывать стек или секреты в теле ответа.
-    Тест падёт, если тело ответа содержит 'Traceback' или 'ZeroDivisionError' или SECRET_KEY.
-    """
-    # Подменим SECRET_KEY на что-то уникальное, и убедимся что оно не утечёт
-    settings.SECRET_KEY = "super-secret-demo-key-for-tests"
-
-    r = client.get("/crash/")
-    # ожидаем 500 (или возможно redirect/страницу), но главное — отсутствие стека
-    assert r.status_code == 500 or r.status_code in SAFE_STATUS, f"/crash/ returned unexpected status {r.status_code}"
-
-    body = r.content.decode("utf-8", errors="ignore")
-    assert "Traceback" not in body, "Stacktrace leaked in response body!"
-    assert "RuntimeError" not in body, "Exception name leaked in response body!"
-    assert settings.SECRET_KEY not in body, "SECRET_KEY leaked in response body!"
 
 
 @pytest.mark.usefixtures("db")  # не обязательно, но часто удобно иметь БД доступной

@@ -1,0 +1,17 @@
+{% extends "iot/base.html" %}
+{% block title %}Detail{% endblock %}
+{% block content %}
+<h2>Detail</h2>
+<dl class="row">
+  <dt class="col-sm-3">ID</dt><dd class="col-sm-9">{{ obj.id }}</dd>
+  <dt class="col-sm-3">Repr</dt><dd class="col-sm-9">{{ obj }}</dd>
+</dl>
+{% if files %}
+  <h3>Files</h3>
+  <ul>
+    {% for f in files %}
+      <li>{{ f.filename }} - <a href="{% url 'iot:download_file' f.id %}">Download</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}

@@ -217,7 +217,7 @@ def hr_candidates_list(request):
     else:
         qs = Candidate.objects.filter(created_by=user).order_by("-date_created")
 
-    return render(request, "hr/hr_candidates_list.html", {"candidates": qs})
+    return render(request, "hr/list.html", {"candidates": qs})
 
 
 @login_required(login_url="hr:login")
