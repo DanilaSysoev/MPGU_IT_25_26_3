@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine", "GameEngine\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumsAndCollections", "EnumsAndCollections\EnumsAndCollections.csproj", "{E6372AE5-8095-49E7-81B3-6EE7EB91B89A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegates", "Delegates\Delegates.csproj", "{6945583C-169F-4FED-AAE6-E73B5A7206EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +56,9 @@ Global
 		{E6372AE5-8095-49E7-81B3-6EE7EB91B89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6372AE5-8095-49E7-81B3-6EE7EB91B89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6372AE5-8095-49E7-81B3-6EE7EB91B89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6945583C-169F-4FED-AAE6-E73B5A7206EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6945583C-169F-4FED-AAE6-E73B5A7206EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6945583C-169F-4FED-AAE6-E73B5A7206EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6945583C-169F-4FED-AAE6-E73B5A7206EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
