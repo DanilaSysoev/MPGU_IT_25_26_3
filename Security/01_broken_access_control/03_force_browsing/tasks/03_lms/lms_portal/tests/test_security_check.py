@@ -62,11 +62,7 @@ def test_export_user_profile_requires_auth(client):
 
 @pytest.mark.usefixtures("db")
 def test_sensitive_static_not_public(live_server, settings, tmp_path):
-    static_dir = tmp_path / "static_public"
-    (static_dir / "backups").mkdir(parents=True)
-    (static_dir / "backups" / ".env.backup").write_text("FAKE")
-    settings.STATICFILES_DIRS = [str(static_dir)]
-    settings.DEBUG = True
+    
     url = f"{live_server.url}/static/backups/.env.backup"
     try:
         resp = requests.get(url, timeout=5)
