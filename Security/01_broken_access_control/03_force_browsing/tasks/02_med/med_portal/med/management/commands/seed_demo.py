@@ -60,7 +60,7 @@ class Command(BaseCommand):
             if hasattr(u, "is_doctor") and getattr(u, "is_doctor") != cfg.get("is_doctor", False):
                 setattr(u, "is_doctor", cfg.get("is_doctor", False)); changed = True
             if changed:
-                u.save(); self.stdout.write(self.style.SUCCESS(f"  + user {u.username}"))
+                u.save(); self.stdout.write(self.style.SUCCESS(f"  + user {u.username}, password: `{cfg["password"]}`"))
             else:
                 self.stdout.write(f"  = user {u.username} (unchanged)")
             out.append(u)

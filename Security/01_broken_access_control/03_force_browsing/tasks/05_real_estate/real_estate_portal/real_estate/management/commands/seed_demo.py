@@ -53,7 +53,7 @@ class Command(BaseCommand):
             if hasattr(u, "is_agent") and getattr(u, "is_agent") != cfg.get("is_agent", False):
                 setattr(u, "is_agent", cfg.get("is_agent", False)); changed = True
             if changed:
-                u.save(); self.stdout.write(self.style.SUCCESS(f"  + user {u.username}"))
+                u.save(); self.stdout.write(self.style.SUCCESS(f"  + user {u.username}, password: `{cfg["password"]}`"))
             else:
                 self.stdout.write(f"  = user {u.username} (unchanged)")
             out.append(u)
