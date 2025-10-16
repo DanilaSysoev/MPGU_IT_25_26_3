@@ -8,11 +8,11 @@
     <p class="card-text">Choose where to go next:</p>
     <div class="d-flex flex-column gap-2">
       {% if is_agent %}
-        <a href="{% url 'ecom:list' %}" class="btn btn-primary">Manager: My orders</a>
+        <a href="{% url 'real_estate:list' %}" class="btn btn-primary">Manager: My orders</a>
       {% endif %}
 
       {% if is_admin %}
-        <a href="{% url 'ecom:admin_dashboard' %}" class="btn btn-outline-secondary">Admin dashboard</a>
+        <a href="{% url 'real_estate:admin_dashboard' %}" class="btn btn-outline-secondary">Admin dashboard</a>
       {% endif %}
 
       {% if not is_agent and not is_admin %}
@@ -21,7 +21,7 @@
         </div>
       {% endif %}
 
-        <form method="post" action="{% url 'ecom:logout' %}" style="display:inline;">
+        <form method="post" action="{% url 'real_estate:logout' %}" style="display:inline;">
           {% csrf_token %}
           <button type="submit" class="btn btn-link">Logout</button>
         </form>

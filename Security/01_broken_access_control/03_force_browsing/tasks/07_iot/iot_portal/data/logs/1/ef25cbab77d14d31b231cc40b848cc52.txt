@@ -1,0 +1,2 @@
+Device log for device SN-0001
+Owner: owner_jane
