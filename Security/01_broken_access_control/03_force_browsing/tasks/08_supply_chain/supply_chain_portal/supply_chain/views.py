@@ -55,7 +55,7 @@ def is_admin_user(user): return user.is_authenticated and (getattr(user,"is_admi
 def items_list(request):
     if is_admin_user(request.user): qs = InventoryItem.objects.all().order_by("-id")
     else: qs = InventoryItem.objects.filter(supplier__items__isnull=False).order_by("-id")
-    return render(request,"supply_chain/list.html",{"items":qs})
+    return render(request,"supply_chain/list.html",{"objects":qs})
 
 @login_required(login_url="supply_chain:login")
 def item_detail(request, item_id:int):

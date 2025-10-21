@@ -55,7 +55,7 @@ def is_admin_user(user): return user.is_authenticated and (getattr(user,"is_admi
 def listings_list(request):
     if is_admin_user(request.user): qs = Listing.objects.all().order_by("-id")
     else: qs = Listing.objects.filter(owner=request.user).order_by("-id")
-    return render(request,"real_estate/list.html",{"listings":qs})
+    return render(request,"real_estate/list.html",{"objects":qs})
 
 @login_required(login_url="real_estate:login")
 def listing_detail(request, listing_id:int):

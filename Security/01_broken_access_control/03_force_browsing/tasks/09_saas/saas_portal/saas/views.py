@@ -56,7 +56,7 @@ def is_admin_user(user): return user.is_authenticated and (getattr(user,"is_admi
 @login_required(login_url="saas:login")
 def projects_list(request):
     qs = Project.objects.filter(members__in=[request.user]).distinct() if not is_admin_user(request.user) else Project.objects.all()
-    return render(request,"saas/list.html",{"projects":qs})
+    return render(request,"saas/list.html",{"objects":qs})
 
 @login_required(login_url="saas:login")
 def task_detail(request, task_id:int):

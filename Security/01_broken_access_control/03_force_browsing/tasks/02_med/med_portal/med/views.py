@@ -72,7 +72,7 @@ def clinic_patients_list(request):
         qs = Patient.objects.all().order_by("-id")
     else:
         qs = Patient.objects.filter(created_by=request.user).order_by("-id")
-    return render(request, "med/list.html", {"patients": qs})
+    return render(request, "med/list.html", {"objects": qs})
 
 @login_required(login_url="med:login")
 def clinic_patient_detail(request, patient_id:int):

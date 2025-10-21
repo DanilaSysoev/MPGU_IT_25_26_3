@@ -55,7 +55,7 @@ def is_admin_user(user): return user.is_authenticated and (getattr(user,"is_admi
 def cases_list(request):
     if is_admin_user(request.user): qs = Case.objects.all().order_by("-created_at")
     else: qs = Case.objects.filter(client=request.user).order_by("-created_at")
-    return render(request,"legal/list.html",{"cases":qs})
+    return render(request,"legal/list.html",{"objects":qs})
 
 @login_required(login_url="legal:login")
 def case_detail(request, case_id:int):

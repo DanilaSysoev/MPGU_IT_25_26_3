@@ -59,7 +59,7 @@ def accounts_list(request):
     if not is_teller(request.user): return HttpResponseForbidden("Access denied")
     if is_admin_user(request.user): qs = Account.objects.all().order_by("-id")
     else: qs = Account.objects.filter(owner=request.user).order_by("-id")
-    return render(request, "fintech/list.html", {"accounts":qs})
+    return render(request, "fintech/list.html", {"objects":qs})
 
 @login_required(login_url="fintech:login")
 def account_detail(request, account_id:int):

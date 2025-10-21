@@ -66,7 +66,7 @@ def instructor_assignments(request):
     if not is_instructor(request.user): return HttpResponseForbidden("Access denied")
     if is_admin_user(request.user): qs = Assignment.objects.all().order_by("-id")
     else: qs = Assignment.objects.filter(course__in=request.user.courses_instructed.all()).order_by("-id")
-    return render(request, "lms/list.html", {"assignments":qs})
+    return render(request, "lms/list.html", {"objects":qs})
 
 @login_required(login_url="lms:login")
 def submission_detail(request, submission_id:int):

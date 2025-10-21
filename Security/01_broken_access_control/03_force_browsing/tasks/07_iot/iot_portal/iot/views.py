@@ -56,7 +56,7 @@ def is_admin_user(user): return user.is_authenticated and (getattr(user,"is_admi
 def devices_list(request):
     if is_admin_user(request.user): qs = Device.objects.all().order_by("-id")
     else: qs = Device.objects.filter(owner=request.user).order_by("-id")
-    return render(request,"iot/list.html",{"devices":qs})
+    return render(request,"iot/list.html",{"objects":qs})
 
 @login_required(login_url="iot:login")
 def device_detail(request, device_id:int):
