@@ -56,7 +56,7 @@ class Command(BaseCommand):
                 changed = True
             if changed:
                 u.save()
-                self.stdout.write(self.style.SUCCESS(f"  + user {u.username}, password: `{cfg["password"]}`"))
+                self.stdout.write(self.style.SUCCESS(f"  + user {u.username}, password: `{cfg['password']}`"))
             else:
                 self.stdout.write(f"  = user {u.username} (unchanged)")
             out.append(u)
