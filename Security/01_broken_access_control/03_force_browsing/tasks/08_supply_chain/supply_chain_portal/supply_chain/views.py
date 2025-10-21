@@ -63,7 +63,7 @@ def item_detail(request, item_id:int):
     if not (is_admin_user(request.user) or is_supply_manager(request.user)):
         return HttpResponseForbidden("Access denied")
     docs = it.docs.all().order_by("-created_at")
-    return render(request,"supply_chain/detail.html",{"item":it,"docs":docs})
+    return render(request,"supply_chain/detail.html",{"obj":it,"files":docs})
 
 @login_required(login_url="supply_chain:login")
 def download_shipment_doc(request, doc_id:int):

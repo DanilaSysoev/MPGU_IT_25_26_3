@@ -63,7 +63,7 @@ def listing_detail(request, listing_id:int):
     if not (is_admin_user(request.user) or l.owner==request.user or is_agent(request.user)):
         return HttpResponseForbidden("Access denied")
     docs = l.docs.all().order_by("-uploaded_at")
-    return render(request,"real_estate/detail.html",{"listing":l,"docs":docs})
+    return render(request,"real_estate/detail.html",{"obj":l,"files":docs})
 
 @login_required(login_url="real_estate:login")
 def download_doc(request, doc_id:int):

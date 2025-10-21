@@ -80,7 +80,7 @@ def clinic_patient_detail(request, patient_id:int):
     if not (is_admin_user(request.user) or is_doctor_user(request.user) or p.created_by == request.user):
         return HttpResponseForbidden("Access denied")
     reports = p.reports.all().order_by("-created_at")
-    return render(request, "med/detail.html", {"patient": p, "reports": reports})
+    return render(request, "med/detail.html", {"obj": p, "files": reports})
 
 @login_required(login_url="med:login")
 def download_report_protected(request, report_id:int):
@@ -101,7 +101,7 @@ def download_report_protected(request, report_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user):
         return HttpResponseForbidden("Access denied")
-    patients = Patient.objects.all().order_by("-created_at")
+    patients = Patient.objects.all()
     reports = MedicalReport.objects.select_related("patient").order_by("-created_at")
     return render(request, "med/admin_dashboard.html", {"patients":patients, "reports":reports})
 

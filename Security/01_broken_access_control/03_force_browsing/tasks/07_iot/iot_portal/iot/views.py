@@ -63,7 +63,7 @@ def device_detail(request, device_id:int):
     d = get_object_or_404(Device, pk=device_id)
     if not (is_admin_user(request.user) or is_tech(request.user) or d.owner==request.user): return HttpResponseForbidden("Access denied")
     logs = d.logs.all().order_by("-created_at")
-    return render(request,"iot/detail.html",{"device":d,"logs":logs})
+    return render(request,"iot/detail.html",{"obj":d,"files":logs})
 
 @login_required(login_url="iot:login")
 def download_log(request, log_id:int):

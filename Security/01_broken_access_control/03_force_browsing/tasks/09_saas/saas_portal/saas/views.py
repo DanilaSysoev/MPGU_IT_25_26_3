@@ -64,7 +64,7 @@ def task_detail(request, task_id:int):
     if not (is_admin_user(request.user) or is_project_member(request.user, task.project)):
         return HttpResponseForbidden("Access denied")
     attachments = task.attachments.all().order_by("-uploaded_at")
-    return render(request,"saas/detail.html",{"task":task,"attachments":attachments})
+    return render(request,"saas/detail.html",{"obj":task,"files":attachments})
 
 @login_required(login_url="saas:login")
 def download_attachment(request, att_id:int):

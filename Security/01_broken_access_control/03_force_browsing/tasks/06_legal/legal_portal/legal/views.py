@@ -62,7 +62,7 @@ def case_detail(request, case_id:int):
     c = get_object_or_404(Case, pk=case_id)
     if not (is_admin_user(request.user) or is_lawyer(request.user) or c.client==request.user): return HttpResponseForbidden("Access denied")
     docs = c.documents.all().order_by("-uploaded_at")
-    return render(request,"legal/detail.html",{"case":c,"docs":docs})
+    return render(request,"legal/detail.html",{"obj":c,"files":docs})
 
 @login_required(login_url="legal:login")
 def download_case_doc(request, doc_id:int):

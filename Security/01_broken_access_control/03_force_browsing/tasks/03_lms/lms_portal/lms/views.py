@@ -73,7 +73,7 @@ def submission_detail(request, submission_id:int):
     sub = get_object_or_404(Submission, pk=submission_id)
     if not (is_admin_user(request.user) or sub.student == request.user or sub.assignment.course.instructors.filter(pk=request.user.pk).exists()):
         return HttpResponseForbidden("Access denied")
-    return render(request, "lms/detail.html", {"submission":sub})
+    return render(request, "lms/detail.html", {"obj":sub})
 
 @login_required(login_url="lms:login")
 def download_submission(request, submission_id:int):

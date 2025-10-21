@@ -66,7 +66,7 @@ def account_detail(request, account_id:int):
     acc = get_object_or_404(Account, pk=account_id)
     if not (is_admin_user(request.user) or is_teller(request.user) or acc.owner==request.user): return HttpResponseForbidden("Access denied")
     statements = acc.statements.all().order_by("-created_at")
-    return render(request, "fintech/detail.html", {"account":acc,"statements":statements})
+    return render(request, "fintech/detail.html", {"obj":acc,"filed":statements})
 
 @login_required(login_url="fintech:login")
 def download_statement(request, statement_id:int):
