@@ -83,7 +83,7 @@ def download_statement(request, statement_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     accounts = Account.objects.all()
-    return render(request,"fintech/admin_dashboard.html",{"accounts":accounts})
+    return render(request,"fintech/admin_dashboard.html",{"objects":accounts})
 
 @login_required(login_url="fintech:login")
 def index(request):

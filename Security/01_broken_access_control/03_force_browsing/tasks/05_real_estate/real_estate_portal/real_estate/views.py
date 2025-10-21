@@ -80,7 +80,7 @@ def download_doc(request, doc_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     listings = Listing.objects.all()
-    return render(request,"real_estate/admin_dashboard.html",{"listings":listings})
+    return render(request,"real_estate/admin_dashboard.html",{"objects":listings})
 
 @login_required(login_url="real_estate:login")
 def index(request):

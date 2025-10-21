@@ -103,7 +103,7 @@ def admin_dashboard(request):
         return HttpResponseForbidden("Access denied")
     patients = Patient.objects.all()
     reports = MedicalReport.objects.select_related("patient").order_by("-created_at")
-    return render(request, "med/admin_dashboard.html", {"patients":patients, "reports":reports})
+    return render(request, "med/admin_dashboard.html", {"objects":patients, "files":reports})
 
 @login_required(login_url="med:login")
 def index(request):

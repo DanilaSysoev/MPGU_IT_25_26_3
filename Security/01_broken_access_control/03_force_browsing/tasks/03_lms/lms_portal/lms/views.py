@@ -92,7 +92,7 @@ def download_submission(request, submission_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     courses = Course.objects.all()
-    return render(request, "lms/admin_dashboard.html", {"courses":courses})
+    return render(request, "lms/admin_dashboard.html", {"objects":courses})
 
 @login_required(login_url="lms:login")
 def index(request):

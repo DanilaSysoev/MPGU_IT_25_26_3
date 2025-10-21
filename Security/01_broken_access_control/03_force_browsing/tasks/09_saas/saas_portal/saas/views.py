@@ -81,7 +81,7 @@ def download_attachment(request, att_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     projects = Project.objects.all()
-    return render(request,"saas/admin_dashboard.html",{"projects":projects})
+    return render(request,"saas/admin_dashboard.html",{"objects":projects})
 
 @login_required(login_url="saas:login")
 def index(request):

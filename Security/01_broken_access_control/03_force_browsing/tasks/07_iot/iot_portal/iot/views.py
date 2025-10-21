@@ -80,7 +80,7 @@ def download_log(request, log_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     devices = Device.objects.all()
-    return render(request,"iot/admin_dashboard.html",{"devices":devices})
+    return render(request,"iot/admin_dashboard.html",{"objects":devices})
 
 @login_required(login_url="iot:login")
 def index(request):

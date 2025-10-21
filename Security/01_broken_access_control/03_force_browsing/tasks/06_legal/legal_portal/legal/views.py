@@ -79,7 +79,7 @@ def download_case_doc(request, doc_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     cases = Case.objects.all()
-    return render(request,"legal/admin_dashboard.html",{"cases":cases})
+    return render(request,"legal/admin_dashboard.html",{"objects":cases})
 
 @login_required(login_url="legal:login")
 def index(request):

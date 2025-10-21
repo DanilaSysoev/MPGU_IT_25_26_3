@@ -80,7 +80,7 @@ def download_shipment_doc(request, doc_id:int):
 def admin_dashboard(request):
     if not is_admin_user(request.user): return HttpResponseForbidden("Access denied")
     items = InventoryItem.objects.all()
-    return render(request,"supply_chain/admin_dashboard.html",{"items":items})
+    return render(request,"supply_chain/admin_dashboard.html",{"objects":items})
 
 @login_required(login_url="supply_chain:login")
 def index(request):
