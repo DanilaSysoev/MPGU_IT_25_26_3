@@ -10,7 +10,7 @@
   <h3>Files</h3>
   <ul>
     {% for f in files %}
-      <li>{{ f.filename }} - <a href="{% url 'legal:download_file' f.id %}">Download</a></li>
+      <li>{{ f.filename }} - <a href="{% url 'legal:download' f.id %}">Download</a></li>
     {% endfor %}
   </ul>
 {% endif %}
