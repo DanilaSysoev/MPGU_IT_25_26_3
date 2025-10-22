@@ -1,0 +1,11 @@
+argon2-cffi==25.1.0
+argon2-cffi-bindings==25.1.0
+bcrypt==5.0.0
+cffi==2.0.0
+iniconfig==2.3.0
+packaging==25.0
+passlib==1.7.4
+pluggy==1.6.0
+pycparser==2.23
+Pygments==2.19.2
+pytest==8.4.2
