@@ -1,8 +1,9 @@
 #!/usr/bin/sh
 
-if ! command -v pytest &> /dev/null; then
-  echo "❌ pytest не найден. Активируйте .venv и установите зависимости:"
-  echo "   source .venv/bin/activate && pip install -r requirements.txt"
+# Проверяем наличие активного окружения
+if [[ -z "$VIRTUAL_ENV" ]]; then
+  echo "❌ Виртуальное окружение не активно."
+  echo "   source .venv/bin/activate"
   exit 1
 fi
 
@@ -16,15 +17,11 @@ fi
 case "$1" in
   1)
     echo "🔐 Запуск тестов с argon2"
-    pytest tests/test_migration_argon2.py
-    pytest tests/test_password_charset_policy.py
-    pytest tests/test_password_length_policy.py
+    python -m pytest tests/test_migration_argon2.py tests/test_password_charset_policy.py tests/test_password_length_policy.py
     ;;
   2)
     echo "🔐 Запуск тестов с bcrypt"
-    pytest tests/test_migration_bcrypt.py
-    pytest tests/test_password_charset_policy.py
-    pytest tests/test_password_length_policy.py
+    python -m pytest tests/test_migration_bcrypt.py tests/test_password_charset_policy.py tests/test_password_length_policy.py
     ;;
   *)
     echo "Неверный аргумент: $1 (должно быть 1 или 2)"
