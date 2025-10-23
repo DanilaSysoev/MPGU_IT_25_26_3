@@ -17,5 +17,9 @@ class PasswordValidationResult:
         return self.is_valid
 
 
+'''
+Требуется проверить минимальную длину пароля (>= 12 символов) и
+наличие в пароле хотя бы одной буквы, цифры и спецсимвола.
+'''
 def validate_password(password: str) -> PasswordValidationResult:
     return PasswordValidationResult(is_valid=True)
