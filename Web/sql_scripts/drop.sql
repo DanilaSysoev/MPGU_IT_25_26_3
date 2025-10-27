@@ -1,1 +1,1 @@
-DROP TABLE animals;
+DROP TABLE goods;
