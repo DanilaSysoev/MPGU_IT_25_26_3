@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsDemo", "EventsDemo\Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomDemo", "RandomDemo\RandomDemo.csproj", "{C6AC98AE-4543-46CE-A264-DD1CAEACC10E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionsDemo", "CollectionsDemo\CollectionsDemo.csproj", "{327FE6F2-BDE8-4543-993B-95F5220C63C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,9 @@ Global
 		{C6AC98AE-4543-46CE-A264-DD1CAEACC10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6AC98AE-4543-46CE-A264-DD1CAEACC10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6AC98AE-4543-46CE-A264-DD1CAEACC10E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327FE6F2-BDE8-4543-993B-95F5220C63C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327FE6F2-BDE8-4543-993B-95F5220C63C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327FE6F2-BDE8-4543-993B-95F5220C63C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327FE6F2-BDE8-4543-993B-95F5220C63C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
