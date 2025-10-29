@@ -13,14 +13,14 @@ def test_password_must_contain_letter_digit_special():
     assert not res.is_valid
     assert validation.ERR_DIGIT in res.errors
 
-    res = validation.validate_password("12345678!")
+    res = validation.validate_password("12345678123456!")
     assert not res.is_valid
     assert validation.ERR_LETTER in res.errors
 
-    res = validation.validate_password("Abcdefg1")
+    res = validation.validate_password("AbcdefgrtuerD1")
     assert not res.is_valid
     assert validation.ERR_SPECIAL in res.errors
 
-    res = validation.validate_password("Abcdef1!")
+    res = validation.validate_password("AbcdefghrtyeE1!")
     assert res.is_valid
     assert not res.errors
