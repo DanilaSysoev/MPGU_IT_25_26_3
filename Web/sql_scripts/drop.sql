@@ -1,1 +1,3 @@
-DROP TABLE goods;
+DROP TABLE drive_licenses CASCADE;
+DROP TABLE humans CASCADE;
+DROP TABLE cities CASCADE;
