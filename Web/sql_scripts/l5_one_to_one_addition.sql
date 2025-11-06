@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name TEXT
+);
+
+CREATE TABLE IF NOT EXISTS user_contacts (
+    id SERIAL PRIMARY KEY REFERENCES users(id) ON DELETE SET NULL ON UPDATE RESTRICT,
+    email TEXT,
+    telegram TEXT,
+    github TEXT,
+    vk TEXT
+);
+
+ALTER TABLE users ADD FOREIGN KEY (id) REFERENCES user_contacts(id) ON DELETE CASCADE ON UPDATE CASCADE;

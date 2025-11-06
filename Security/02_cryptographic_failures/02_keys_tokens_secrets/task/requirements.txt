@@ -1,0 +1,4 @@
+pyjwt
+passlib
+python-dotenv
+pytest
