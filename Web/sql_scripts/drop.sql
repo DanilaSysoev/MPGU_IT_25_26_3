@@ -1,5 +1,1 @@
-DROP TABLE drive_licenses CASCADE;
-DROP TABLE humans CASCADE;
-DROP TABLE cities CASCADE;
-DROP TABLE users CASCADE;
-DROP TABLE user_contacts CASCADE;
+DROP TABLE settlements;
